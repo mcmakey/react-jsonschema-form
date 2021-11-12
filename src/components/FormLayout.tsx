@@ -1,28 +1,32 @@
 import React from "react";
-import JSONSchemaForm from "@rjsf/core";
-import { ISubmitEvent, IChangeEvent } from "@rjsf/core";
+import Form from "@rjsf/core";
+import { ISubmitEvent, IChangeEvent, AjvError } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 
-const Form = JSONSchemaForm;
+// const Form = JSONSchemaForm;
 
 const schema: JSONSchema7 = {
-    title: "Field",
-    allOf: [
-        {
-            type: ["string", "boolean"],
-        },
-        {
-            type: "boolean",
-        },
-    ],
+    type: "object",
+    properties: {
+        onlyNumbersString: { type: "string", pattern: "^\\d*$" },
+    },
 };
 
 // const uiSchema = {
-//     "ui:widget": "checkboxes",
+//     "ui:widget": "alt-datetime",
 //     "ui:options": {
-//         inline: true,
+//         yearsRange: [1980, 2030],
 //     },
 // };
+
+function transformErrors(errors: AjvError[]) {
+    return errors.map((error: AjvError) => {
+        if (error.name === "pattern") {
+            error.message = "Only digits are allowed";
+        }
+        return error;
+    });
+}
 
 const onChange = (e: IChangeEvent) => {
     console.log(e);
@@ -33,7 +37,13 @@ const onSubmit = (e: ISubmitEvent<any>) => {
 };
 
 const FormLayout: React.FC = () => (
-    <Form className="my-form" schema={schema} /*uiSchema={uiSchema}*/ onChange={onChange} onSubmit={onSubmit} />
+    <Form
+        className="my-form"
+        schema={schema}
+        /*uiSchema={uiSchema}*/ onChange={onChange}
+        onSubmit={onSubmit}
+        transformErrors={transformErrors}
+    />
 );
 
 export { FormLayout };
