@@ -6,15 +6,21 @@ import { JSONSchema7 } from "json-schema";
 const Form = JSONSchemaForm;
 
 const schema: JSONSchema7 = {
-    type: "object",
-    properties: {
-        foo: { type: "string" },
-        bar: { type: "string" },
+    type: "array",
+    minItems: 2,
+    title: "A multiple-choice list",
+    items: {
+        type: "string",
+        enum: ["foo", "bar", "fuzz", "qux"],
     },
+    uniqueItems: true,
 };
 
 const uiSchema = {
-    "ui:order": ["bar", "foo"],
+    "ui:widget": "checkboxes",
+    "ui:options": {
+        inline: true,
+    },
 };
 
 const onChange = (e: IChangeEvent) => {
