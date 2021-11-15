@@ -1,15 +1,13 @@
 import React from "react";
 import Form from "@rjsf/core";
-import { ISubmitEvent, IChangeEvent, AjvError } from "@rjsf/core";
+import { ISubmitEvent, IChangeEvent } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 
 // const Form = JSONSchemaForm;
 
 const schema: JSONSchema7 = {
-    type: "object",
-    properties: {
-        onlyNumbersString: { type: "string", pattern: "^\\d*$" },
-    },
+    type: "string",
+    format: "phone-us",
 };
 
 // const uiSchema = {
@@ -19,14 +17,9 @@ const schema: JSONSchema7 = {
 //     },
 // };
 
-function transformErrors(errors: AjvError[]) {
-    return errors.map((error: AjvError) => {
-        if (error.name === "pattern") {
-            error.message = "Only digits are allowed";
-        }
-        return error;
-    });
-}
+const customFormats = {
+    "phone-us": /\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$/,
+};
 
 const onChange = (e: IChangeEvent) => {
     console.log(e);
@@ -42,7 +35,7 @@ const FormLayout: React.FC = () => (
         schema={schema}
         /*uiSchema={uiSchema}*/ onChange={onChange}
         onSubmit={onSubmit}
-        transformErrors={transformErrors}
+        customFormats={customFormats}
     />
 );
 
