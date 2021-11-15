@@ -3,23 +3,32 @@ import Form from "@rjsf/core";
 import { ISubmitEvent, IChangeEvent } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 
-// const Form = JSONSchemaForm;
-
 const schema: JSONSchema7 = {
-    type: "string",
-    format: "phone-us",
+    type: "array",
+    items: {
+        type: "string",
+    },
 };
 
-// const uiSchema = {
-//     "ui:widget": "alt-datetime",
-//     "ui:options": {
-//         yearsRange: [1980, 2030],
-//     },
+const CustomInput = function (props: any) {
+    return (
+        <input
+            type="text"
+            className="custom"
+            value={props.value}
+            required={props.required}
+            onChange={event => props.onChange(event.target.value)}
+        />
+    );
+};
+
+const uiSchema = {
+    "ui:widget": CustomInput,
+};
+
+// const widgets = {
+//     CheckboxWidget: CustomCheckbox,
 // };
-
-const customFormats = {
-    "phone-us": /\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$/,
-};
 
 const onChange = (e: IChangeEvent) => {
     console.log(e);
@@ -33,9 +42,10 @@ const FormLayout: React.FC = () => (
     <Form
         className="my-form"
         schema={schema}
-        /*uiSchema={uiSchema}*/ onChange={onChange}
+        uiSchema={uiSchema}
+        /*widgets={widgets}*/
+        onChange={onChange}
         onSubmit={onSubmit}
-        customFormats={customFormats}
     />
 );
 
