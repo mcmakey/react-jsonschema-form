@@ -1,13 +1,29 @@
-import React from "react";
+import * as React from "react";
 import MForm from "@rjsf/core";
-import { ISubmitEvent } from "@rjsf/core";
+import { ISubmitEvent, UiSchema } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
+import { FieldTemplate } from "./FieldTemplate";
 
 interface IProps {
+    className?: string;
     schema: JSONSchema7;
+    uiSchema: UiSchema;
     onSubmit: (e: ISubmitEvent<any>) => void;
 }
 
-const Form: React.FC<IProps> = ({ schema, onSubmit }) => <MForm schema={schema} onSubmit={onSubmit} />;
+const widgets = {
+    /*widgets*/
+};
+
+const Form: React.FC<IProps> = ({ className, schema, uiSchema, onSubmit }) => (
+    <MForm
+        className={className}
+        FieldTemplate={FieldTemplate}
+        schema={schema}
+        uiSchema={uiSchema}
+        widgets={widgets}
+        onSubmit={onSubmit}
+    />
+);
 
 export { Form };
