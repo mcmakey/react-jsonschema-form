@@ -2,7 +2,7 @@ import * as React from "react";
 import MForm from "@rjsf/core";
 import { ISubmitEvent, UiSchema } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
-import { FieldTemplate } from "./FieldTemplate";
+import { FieldTemplate } from "./field-template/FieldTemplate";
 
 interface IProps {
     className?: string;

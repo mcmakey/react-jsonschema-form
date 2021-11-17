@@ -1,5 +1,6 @@
 import * as React from "react";
 //import FieldTemplateProps from "@rjsf/core";
+import "./FieldTemplate.scss";
 
 const FieldTemplate: React.FC = (props: any /*FieldTemplateProps*/) => {
     const { label, children } = props;
