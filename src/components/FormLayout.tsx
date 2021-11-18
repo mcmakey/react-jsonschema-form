@@ -12,7 +12,7 @@ const schema: JSONSchema7 = {
         },
         patronymic: {
             type: "boolean",
-            title: "Нет отчество",
+            title: "Нет отчества",
         },
         changeFullName: {
             type: "boolean",
@@ -51,6 +51,9 @@ const schema: JSONSchema7 = {
 const uiSchema = {
     employeId: {
         "ui:widget": "BaseInput",
+    },
+    patronymic: {
+        "ui:widget": "CheckboxWidget",
     },
     changeFullName: {
         "ui:widget": "radio",
