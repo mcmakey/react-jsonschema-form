@@ -5,19 +5,21 @@ import { JSONSchema7 } from "json-schema";
 import { FieldTemplate } from "./field-template/FieldTemplate";
 
 interface IProps {
-    className?: string;
     schema: JSONSchema7;
     uiSchema: UiSchema;
-    onSubmit: (e: ISubmitEvent<any>) => void;
 }
 
 const widgets = {
     /*widgets*/
 };
 
-const Form: React.FC<IProps> = ({ className, schema, uiSchema, onSubmit }) => (
+const onSubmit = (e: ISubmitEvent<any>) => {
+    console.log(e);
+};
+
+const Form: React.FC<IProps> = ({ schema, uiSchema }) => (
     <MForm
-        className={className}
+        className="my-form"
         FieldTemplate={FieldTemplate}
         schema={schema}
         uiSchema={uiSchema}

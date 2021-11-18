@@ -68,10 +68,6 @@ const uiSchema = {
     },
 };
 
-const onSubmit = (e: ISubmitEvent<any>) => {
-    console.log(e);
-};
-
-const FormLayout: React.FC = () => <Form className="my-form" schema={schema} uiSchema={uiSchema} onSubmit={onSubmit} />;
+const FormLayout: React.FC = () => <Form schema={schema} uiSchema={uiSchema} />;
 
 export { FormLayout };
