@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ISubmitEvent } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import { Form } from "../form-generator";
 
@@ -50,15 +49,20 @@ const schema: JSONSchema7 = {
 };
 
 const uiSchema = {
+    employeId: {
+        "ui:widget": "BaseInput",
+    },
     changeFullName: {
         "ui:widget": "radio",
     },
     phone: {
+        "ui:widget": "BaseInput",
         "ui:options": {
             inputType: "tel",
         },
     },
     email: {
+        "ui:widget": "BaseInput",
         "ui:options": {
             inputType: "email",
         },

@@ -3,6 +3,7 @@ import MForm from "@rjsf/core";
 import { ISubmitEvent, UiSchema } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import { FieldTemplate } from "./field-template/FieldTemplate";
+import { BaseInput } from "./baseinput/BaseInput";
 
 interface IProps {
     schema: JSONSchema7;
@@ -10,7 +11,7 @@ interface IProps {
 }
 
 const widgets = {
-    /*widgets*/
+    BaseInput,
 };
 
 const onSubmit = (e: ISubmitEvent<any>) => {
