@@ -5,6 +5,7 @@ import { JSONSchema7 } from "json-schema";
 import { FieldTemplate } from "./field-template/FieldTemplate";
 import { BaseInput } from "./baseinput/BaseInput";
 import { CheckboxWidget } from "./checkbox/CheckboxWidget";
+import { RadioWidget } from "./radio/RadioWidget";
 
 interface IProps {
     schema: JSONSchema7;
@@ -14,6 +15,7 @@ interface IProps {
 const widgets = {
     BaseInput,
     CheckboxWidget,
+    RadioWidget,
 };
 
 const onSubmit = (e: ISubmitEvent<any>) => {

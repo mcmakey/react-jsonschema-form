@@ -17,6 +17,18 @@ const schema: JSONSchema7 = {
         changeFullName: {
             type: "boolean",
             title: "Меняли ли ФИО",
+            anyOf: [
+                {
+                    type: "string",
+                    title: "Да",
+                    enum: ["yes"],
+                },
+                {
+                    type: "string",
+                    title: "Нет",
+                    enum: ["no"],
+                },
+            ],
         },
         dateOfBirth: {
             type: "string",
