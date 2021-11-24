@@ -11,12 +11,12 @@ const RadioWidget: React.FC<any /*TODO: WidgetProps*/> = props => {
         <div className="my-form-radio-group">
             {options &&
                 options.enumOptions.map((option: any) => {
-                    console.log(option);
-
                     return (
                         <div className="my-form-radio" key={option.label}>
-                            <input className="my-form-radio__input" name="test-radio" type="radio" />
-                            <label className="my-form-checkbox__label">{option.title /*TODO: */}</label>
+                            <label>
+                                <input className="my-form-radio__input" name="test-radio" type="radio" />
+                                <div className="my-form-radio__label">{"label" /*TODO: text?*/}</div>
+                            </label>
                         </div>
                     );
                 })}
