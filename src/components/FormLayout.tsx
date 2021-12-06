@@ -67,6 +67,9 @@ const uiSchema = {
     patronymic: {
         "ui:widget": "CheckboxWidget",
     },
+    placeOfBirth: {
+        "ui:widget": "SelectWidget",
+    },
     changeFullName: {
         "ui:widget": "radio",
     },
