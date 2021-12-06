@@ -1,10 +1,14 @@
 import * as React from "react";
 import InputBase, { InputBaseProps } from "@mui/material/InputBase";
-import Icon from "@mui/material/Icon";
+import Done from "@mui/icons-material/Done";
 // import WidgetProps from "@rjsf/core";
 import styled from "@emotion/styled";
 
-const Input: React.FC<InputBaseProps> = props => <InputBase {...props} endAdornment="ок" />;
+const DoneIcon = styled(Done)`
+    transform: scale(0.6);
+`;
+
+const Input: React.FC<InputBaseProps> = props => <InputBase {...props} endAdornment={<DoneIcon color="success" />} />;
 
 const StyledInput = styled(Input)`
     padding: 16px;
