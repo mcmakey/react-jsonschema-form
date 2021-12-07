@@ -89,7 +89,7 @@ const uiSchema = {
         "ui:widget": "FileWidget",
     },
     additionalInfo: {
-        "ui:widget": "textarea",
+        "ui:widget": "TextareaWidget",
     },
 };
 
