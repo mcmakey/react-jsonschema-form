@@ -7,6 +7,7 @@ import { BaseInput } from "./baseinput/BaseInput";
 import { CheckboxWidget } from "./checkbox/CheckboxWidget";
 import { RadioWidget } from "./radio/RadioWidget";
 import { SelectWidget } from "./select/SelectWidget";
+import { FileWidget } from "./file/FileWidget";
 
 interface IProps {
     schema: JSONSchema7;
@@ -18,6 +19,7 @@ const widgets = {
     CheckboxWidget,
     RadioWidget,
     SelectWidget,
+    FileWidget,
 };
 
 const onSubmit = (e: ISubmitEvent<any>) => {

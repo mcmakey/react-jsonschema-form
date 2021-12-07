@@ -85,6 +85,9 @@ const uiSchema = {
             inputType: "email",
         },
     },
+    file: {
+        "ui:widget": "FileWidget",
+    },
     additionalInfo: {
         "ui:widget": "textarea",
     },
