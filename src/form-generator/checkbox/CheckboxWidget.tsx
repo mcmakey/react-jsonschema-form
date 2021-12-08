@@ -1,17 +1,26 @@
 import * as React from "react";
+import { Checkbox, CheckboxProps, FormControlLabel } from "@mui/material";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import styled from "@emotion/styled";
 // import WidgetProps from "@rjsf/core";
 
+const StyledCheckbox = styled(Checkbox)<CheckboxProps>(({ theme }) => ({
+    backgroundColor: "transparent",
+
+    "&:hover": {
+        backgroundColor: "transparent",
+    },
+}));
+
 const CheckboxWidget: React.FC<any /*TODO: WidgetProps*/> = props => {
-    const { required, value, schema } = props;
+    const { label } = props;
 
     return (
-        <div className="my-form-checkbox">
-            <label>
-                <input className="my-form-checkbox__input" type="checkbox" value={value} required={required} />
-                <span className="my-form-checkbox__icon" />
-                <span className="my-form-checkbox__label">{schema.title}</span>
-            </label>
-        </div>
+        <FormControlLabel
+            label={label}
+            control={<StyledCheckbox icon={<CheckBoxOutlineBlankIcon />} checkedIcon={<CheckBoxIcon />} />}
+        />
     );
 };
 
