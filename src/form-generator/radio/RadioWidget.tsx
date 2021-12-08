@@ -1,26 +1,18 @@
 import * as React from "react";
+import { RadioGroup, Radio, FormControlLabel } from "@mui/material";
 // import WidgetProps from "@rjsf/core";
 import "./RadioWidget.scss";
 
 const RadioWidget: React.FC<any /*TODO: WidgetProps*/> = props => {
     const { options } = props;
 
-    console.log(options);
-
     return (
-        <div className="my-form-radio-group">
+        <RadioGroup>
             {options &&
                 options.enumOptions.map((option: any) => {
-                    return (
-                        <div className="my-form-radio" key={option.label}>
-                            <label>
-                                <input className="my-form-radio__input" name="test-radio" type="radio" />
-                                <div className="my-form-radio__label">{"label" /*TODO: text?*/}</div>
-                            </label>
-                        </div>
-                    );
+                    return <FormControlLabel value={option.value} label={option.label} control={<Radio />} />;
                 })}
-        </div>
+        </RadioGroup>
     );
 };
 
