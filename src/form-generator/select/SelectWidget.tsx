@@ -1,6 +1,5 @@
 import { Select, SelectProps, Input, InputProps, MenuItem } from "@mui/material";
 import styled from "@emotion/styled";
-import "./SelectWidget.scss";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const StyledSelect = styled(Select)<SelectProps>`

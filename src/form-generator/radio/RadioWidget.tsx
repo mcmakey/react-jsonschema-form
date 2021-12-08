@@ -1,6 +1,5 @@
 import * as React from "react";
 import { RadioGroup, RadioGroupProps, Radio, RadioProps, FormControlLabel } from "@mui/material";
-import "./RadioWidget.scss";
 import styled from "@emotion/styled";
 
 const StyledRadioGroup = styled(RadioGroup)<RadioGroupProps>(({ theme }) => ({
@@ -23,6 +22,7 @@ const StyledRadio = styled(Radio)<RadioProps>(({ theme }) => ({
 
     "&.Mui-checked + .MuiFormControlLabel-label": {
         backgroundColor: "white",
+        boxShadow: "0px 1px 1px rgba(41, 53, 68, 0.25)",
     },
 }));
 
