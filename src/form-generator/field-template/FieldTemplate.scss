@@ -3,19 +3,17 @@
     margin-bottom: 10px;
 
     &__label {
+        display: flex;
+        align-items: center;
         width: 140px;
         padding-right: 30px;
         font-size: 18px;
         line-height: 1.33em;
     }
+}
 
-    // перенести в InputBase
-    .form-control {
-        padding: 16px;
-        font-size: 18px;
-        line-height: 1.33em;
-        border-radius: 3px;
-        border: none;
-        background-color: #f6f4f1;
-    }
+// TODO:
+
+fieldset#root {
+    border: none;
 }

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ISubmitEvent } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import { Form } from "../form-generator";
 
@@ -13,11 +12,23 @@ const schema: JSONSchema7 = {
         },
         patronymic: {
             type: "boolean",
-            title: "Нет отчество",
+            title: "Нет отчества",
         },
         changeFullName: {
             type: "boolean",
             title: "Меняли ли ФИО",
+            anyOf: [
+                {
+                    type: "string",
+                    title: "Да",
+                    enum: ["yes"],
+                },
+                {
+                    type: "string",
+                    title: "Нет",
+                    enum: ["no"],
+                },
+            ],
         },
         dateOfBirth: {
             type: "string",
@@ -50,28 +61,38 @@ const schema: JSONSchema7 = {
 };
 
 const uiSchema = {
+    employeId: {
+        "ui:widget": "BaseInput",
+    },
+    patronymic: {
+        "ui:widget": "CheckboxWidget",
+    },
+    placeOfBirth: {
+        "ui:widget": "SelectWidget",
+    },
     changeFullName: {
         "ui:widget": "radio",
     },
     phone: {
+        "ui:widget": "BaseInput",
         "ui:options": {
             inputType: "tel",
         },
     },
     email: {
+        "ui:widget": "BaseInput",
         "ui:options": {
             inputType: "email",
         },
     },
+    file: {
+        "ui:widget": "FileWidget",
+    },
     additionalInfo: {
-        "ui:widget": "textarea",
+        "ui:widget": "TextareaWidget",
     },
 };
 
-const onSubmit = (e: ISubmitEvent<any>) => {
-    console.log(e);
-};
-
-const FormLayout: React.FC = () => <Form className="my-form" schema={schema} uiSchema={uiSchema} onSubmit={onSubmit} />;
+const FormLayout: React.FC = () => <Form schema={schema} uiSchema={uiSchema} />;
 
 export { FormLayout };

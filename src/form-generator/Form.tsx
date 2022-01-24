@@ -3,21 +3,34 @@ import MForm from "@rjsf/core";
 import { ISubmitEvent, UiSchema } from "@rjsf/core";
 import { JSONSchema7 } from "json-schema";
 import { FieldTemplate } from "./field-template/FieldTemplate";
+import { BaseInput } from "./baseinput/BaseInput";
+import { CheckboxWidget } from "./checkbox/CheckboxWidget";
+import { RadioWidget } from "./radio/RadioWidget";
+import { SelectWidget } from "./select/SelectWidget";
+import { FileWidget } from "./file/FileWidget";
+import { TextareaWidget } from "./textarea/TextareaWidget";
 
 interface IProps {
-    className?: string;
     schema: JSONSchema7;
     uiSchema: UiSchema;
-    onSubmit: (e: ISubmitEvent<any>) => void;
 }
 
 const widgets = {
-    /*widgets*/
+    BaseInput,
+    CheckboxWidget,
+    RadioWidget,
+    SelectWidget,
+    FileWidget,
+    TextareaWidget,
 };
 
-const Form: React.FC<IProps> = ({ className, schema, uiSchema, onSubmit }) => (
+const onSubmit = (e: ISubmitEvent<any>) => {
+    console.log(e);
+};
+
+const Form: React.FC<IProps> = ({ schema, uiSchema }) => (
     <MForm
-        className={className}
+        className="my-form"
         FieldTemplate={FieldTemplate}
         schema={schema}
         uiSchema={uiSchema}
